@@ -4,7 +4,6 @@ import { NavigationEvents } from "react-navigation";
 
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
-import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
 
 const SigninScreen = ({ navigation }) => {
@@ -12,10 +11,7 @@ const SigninScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationEvents
-        // onWillFocus={clearErrorMessage}
-        onWillBlur={clearErrorMessage}
-      />
+      <NavigationEvents onWillBlur={clearErrorMessage} />
       <AuthForm
         headerText="Signin to Your Account"
         // errorMessage={state.errorMessage}
