@@ -27,7 +27,7 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
         onChangeText={setPassword}
         autoCapitalize="none"
         autoCorrect={false}
-        secureTextEntry
+        // secureTextEntry
       />
       {errorMessage ? (
         <Text style={styles.errorMessage}>{errorMessage}</Text>

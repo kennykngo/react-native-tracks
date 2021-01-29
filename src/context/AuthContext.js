@@ -8,11 +8,12 @@ const authReducer = (state, action) => {
   switch (action.type) {
     case "add_error":
       return { ...state, errorMessage: action.payload };
-
     case "signin":
       return { token: action.payload, errorMessage: "" };
     case "clear_error_message":
       return { ...state, errorMessage: "" };
+    case "signout":
+      return { token: null, errorMessage: "" };
     default:
       return state;
   }
@@ -60,13 +61,15 @@ const signin = (dispatch) => async ({ email, password }) => {
   } catch (err) {
     dispatch({
       type: "add_error",
-      payload: "Something went wrong with sign in.",
+      payload: "Something went wrong with sign in",
     });
   }
 };
 
-const signout = (dispatch) => {
-  return () => {};
+const signout = (dispatch) => async () => {
+  await AsyncStorage.removeItem("token");
+  dispatch({ type: "signout" });
+  navigate("loginFlow");
 };
 
 export const { Provider, Context } = createDataContext(
